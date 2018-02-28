@@ -11,8 +11,7 @@
     "test": "./bin/test",
     "test:ci": "yarn run test:prebuild; yarn test",
     "webpack": "webpack",
-    "build": "rimraf dist/ && NODE_ENV=production npm run webpack && gulp build",
-    "postinstall": "npm run build"
+    "build": "rimraf dist/ && NODE_ENV=production npm run webpack && gulp build"
   },
   "engines": {
     "node": "8.9.0",
