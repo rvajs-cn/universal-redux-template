@@ -1,5 +1,12 @@
 [![Build Status](https://travis-ci.org/mz026/universal-redux-template.svg?branch=master)](https://travis-ci.org/mz026/universal-redux-template)
 
+# Upgrade
+
+* 2018-04-15
+
+node-sass ^3.4.2 -> ^4.8.3
+gulp-sass ^2.1.1 -> ^4.0.1
+
 # Universal Redux Template
 A boilerplate doing universal/isomorphic rendering with Redux + React-router + Express, based on [Redux-Realword-Example](https://github.com/reactjs/redux/tree/master/examples/real-world)
 
