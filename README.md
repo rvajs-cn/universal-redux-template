@@ -5,6 +5,7 @@
 * 2018-04-15
 
 node-sass ^3.4.2 -> ^4.8.3
+
 gulp-sass ^2.1.1 -> ^4.0.1
 
 # Universal Redux Template
