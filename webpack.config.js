@@ -31,7 +31,7 @@ var config = {
     filename: '[name].js'
   },
   plugins: [
-    new webpack.EnvironmentPlugin(['NODE_ENV', 'API_BASE_URL'])
+    new webpack.EnvironmentPlugin(['NODE_ENV', 'PORT', 'API_BASE_URL'])
   ],
   module: {
     rules: [

@@ -1,0 +1,17 @@
+{
+  "name": "rvajs-web",
+  "script": "dist/server-build/server/index.js",
+  "exec_mode" : "fork",
+  "watch": false,
+  "ignore_watch": ["tmp"],
+  "error_file": "/dev/null",
+  "env": {
+    "NODE_PATH": "./dist/server-build",
+    "NODE_ENV": "production",
+    "PORT": 3000,
+    "API_BASE_URL": "http://t.yx.cn"
+  },
+  "engines": {
+    "node": ">=8.9"
+  }
+}
