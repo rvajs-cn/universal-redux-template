@@ -1,6 +1,5 @@
 var path = require('path')
 var webpack = require('webpack')
-var AssetsPlugin = require('assets-webpack-plugin')
 
 var DEBUG = !(process.env.NODE_ENV === 'production')
 
@@ -10,6 +9,7 @@ if (DEBUG) {
 
 var config = {
   devtool: DEBUG ? 'cheap-module-eval-source-map' : false,
+  mode: DEBUG ? 'development' : 'production',
   entry: {
     app: ['./app/app'],
     vendor: [
@@ -24,7 +24,7 @@ var config = {
     ]
   },
   resolve: {
-    modules: [ path.join(__dirname, 'app'), 'node_modules' ]
+    modules: [path.join(__dirname, 'app'), 'node_modules']
   },
   output: {
     path: path.join(__dirname, 'dist'),
@@ -42,19 +42,27 @@ var config = {
         include: __dirname
       }
     ]
+  },
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+          minChunks: 2
+        }
+      }
+    }
   }
 }
-
 
 if (DEBUG) {
   config.entry.app.push('webpack-hot-middleware/client?path=/__webpack_hmr')
 
   config.plugins = config.plugins.concat([
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filname: 'vendor.js'
-    })
+    new webpack.HotModuleReplacementPlugin()
   ])
   config.output.publicPath = '/'
   config.module.rules.unshift({
@@ -64,13 +72,7 @@ if (DEBUG) {
     include: __dirname
   })
 } else {
-  config.plugins = config.plugins.concat([
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filname: '[name].[chunkhash].js'
-    }),
-    new webpack.optimize.UglifyJsPlugin(),
-  ])
+  config.optimization.minimize = true
 }
 
 module.exports = config
