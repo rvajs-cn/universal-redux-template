@@ -23,7 +23,7 @@ if (window.__REDUX_STATE__) {
 
 const store = configureStore(reduxState)
 
-ReactDOM.render((
+ReactDOM.hydrate((
   <Provider store={store}>
     { createRoutes(browserHistory) }
   </Provider>
