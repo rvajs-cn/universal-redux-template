@@ -8,8 +8,7 @@
   "env": {
     "NODE_PATH": "./dist/server-build",
     "NODE_ENV": "production",
-    "PORT": 3000,
-    "API_BASE_URL": "http://t.yx.cn"
+    "PORT": 3000
   },
   "engines": {
     "node": ">=8.9"
